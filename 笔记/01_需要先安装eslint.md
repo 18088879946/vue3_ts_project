@@ -1,0 +1,67 @@
+#### 按照eslint步骤
+
+```javas
+1、终端执行 npm i eslint -D
+2、之后执行 npx eslint --init ,按照相应的步骤执行完成之后生成.eslintrc.cjs 文件，如下
+```
+
+```cjs
+// 用于将整个文件作为一个模块导出，以供其他文件使用。
+module.exports = {
+  // 指定 ESLint 检查的代码运行环境，
+  // 其中 "browser": true 表示代码运行在浏览器环境中，
+  // "es2021": true 表示代码使用了 ES2021 的语言特性。
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  // 规则继承
+  extends: [
+    // 指定了要使用的 ESLint 规则集，
+    // "eslint:recommended" 是 ESLint 官方推荐的规则集，
+    // "plugin:@typescript-eslint/recommended" 是 TypeScript 官方推荐的规则集，
+    // "plugin:vue/vue3-essential" 是 Vue.js 官方推荐的规则集。
+    "eslint:recommended",
+    // ts语法规则
+    "plugin:@typescript-eslint/recommended",
+    // vue3语法规则
+    "plugin:vue/vue3-essential",
+  ],
+  // 指定了针对某些文件的特定配置，这里的配置是针对 ".eslintrc.js" 和 ".eslintrc.cjs" 文件，
+  // 将其解析为脚本文件，而不是模块。同时，这个配置还指定了环境为 Node.js。
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: [".eslintrc.{js,cjs}"],
+      parserOptions: {
+        sourceType: "script",
+      },
+    },
+  ],
+  // 指定了 ESLint 使用的解析器和解析选项。
+  // "ecmaVersion": "latest" 表示使用最新的 ECMAScript 版本，
+  // "parser": "@typescript-eslint/parser" 表示使用 TypeScript 解析器，
+  // "sourceType": "module" 表示使用 ES6 的模块系统。
+  parserOptions: {
+    ecmaVersion: "latest",
+    parser: "@typescript-eslint/parser",
+    sourceType: "module",
+  },
+  // 指定了要使用的插件，这里使用了 TypeScript 和 Vue.js 的插件。
+  plugins: ["@typescript-eslint", "vue"],
+  // 指定了 ESLint 规则的具体配置，这里没有任何规则配置。
+  // 通常，这个配置项用于自定义规则或者修改默认规则。
+  rules: {},
+};
+
+```
+
+#### Vue3环境代码校验插件，需要安装eslint相关插件
+
+```javas
+1、安装指令：
+npm install -D eslint-plugin-import eslint-plugin-vue eslint-plugin-node eslint-plugin-prettier eslint-config-prettier eslint-plugin-node @babel/eslint-parser 
+```
+

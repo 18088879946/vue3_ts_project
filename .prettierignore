@@ -1,0 +1,7 @@
+# /dist/*
+# /html/*
+# .lacal
+# /node_moduels/**
+# **/*.svg
+# **/*.sh
+# /public/*
